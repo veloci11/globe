@@ -1,0 +1,5 @@
+node_modules/
+.next/
+trace*.json
+*.tsbuildinfo
+.DS_Store
