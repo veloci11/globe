@@ -1,0 +1,511 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animation ticker avec variable CSS dynamique */
+@keyframes tickerScroll {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(calc(var(--ticker-height, 0px) * -1));
+  }
+}
+
+.animate-ticker-scroll {
+  animation: tickerScroll 10s linear infinite;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --animate-scrollUp: scrollUp 3s linear infinite;
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary: oklch(0.208 0.042 265.755);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(0.968 0.007 247.896);
+  --secondary-foreground: oklch(0.208 0.042 265.755);
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(0.704 0.04 256.788);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.dark {
+  --background: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.984 0.003 247.858);
+  --card: oklch(0.208 0.042 265.755);
+  --card-foreground: oklch(0.984 0.003 247.858);
+  --popover: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.984 0.003 247.858);
+  --primary: oklch(0.929 0.013 255.508);
+  --primary-foreground: oklch(0.208 0.042 265.755);
+  --secondary: oklch(0.279 0.041 260.031);
+  --secondary-foreground: oklch(0.984 0.003 247.858);
+  --muted: oklch(0.279 0.041 260.031);
+  --muted-foreground: oklch(0.704 0.04 256.788);
+  --accent: oklch(0.279 0.041 260.031);
+  --accent-foreground: oklch(0.984 0.003 247.858);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.551 0.027 264.364);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.208 0.042 265.755);
+  --sidebar-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.279 0.041 260.031);
+  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
+    scrollbar-width: none;
+    scroll-behavior: auto;
+  }
+
+  /* Prévenir tout débordement horizontal */
+  * {
+    max-width: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Cacher les scrollbars mais garder le scroll fonctionnel */
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
+  /* Performance: Optimiser le rendu GPU */
+  [style*="will-change"] {
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Performance: Réduire la charge des backdrop-blur */
+  [class*="backdrop-blur"] {
+    transform: translateZ(0);
+    will-change: auto;
+  }
+
+  /* Performance: Optimiser les transitions */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Responsive images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Forcer le text wrapping sur mobile */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  span,
+  div {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  /* 🚀 OPTIMISATION: GPU acceleration pour les popups et animations */
+  .popup-container,
+  [class*="animate-"] {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* 🚀 OPTIMISATION: Containment pour réduire les recalculs de layout */
+  .content-panel,
+  .side-menu {
+    contain: layout style;
+  }
+
+  /* 🚀 OPTIMISATION: Réduire le coût du backdrop-blur */
+  .backdrop-blur-lg,
+  .backdrop-blur-xl,
+  .backdrop-blur-2xl {
+
+    /* Utiliser un blur moins coûteux sur mobile */
+    @media (max-width: 768px) {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+  }
+
+  /* 🚀 OPTIMISATION: GPU acceleration pour les layers parallax */
+  [data-parallax-layer] {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+/* Animation élégante pour les popups - apparition douce et moderne */
+@keyframes slideInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-slideInTop {
+  animation: slideInTop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Animation pour la ligne de connexion - effet de dessin */
+@keyframes drawLine {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* 🎨 Animation pour la ligne - démarre APRÈS le zoom (2.1s) */
+@keyframes drawLineFromPopup {
+  0% {
+    stroke-dashoffset: var(--line-length, 1000);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* 🎨 Animation pour le contour SVG - tracé animé comme la ligne */
+@keyframes drawBorderPath {
+  0% {
+    stroke-dashoffset: var(--path-length);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* ⚠️ Animation de disparition de la ligne (inverse) - RAPIDE */
+@keyframes eraseLineToPoint {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: var(--line-length, 1000);
+    opacity: 0;
+  }
+}
+
+/* ⚠️ Animation d'effacement du contour (inverse) */
+@keyframes eraseBorderPath {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: var(--path-length);
+    opacity: 0;
+  }
+}
+
+/* 🔄 Animation d'effacement du contour dans le sens INVERSE (pour l'angle) - RAPIDE */
+@keyframes eraseBorderPathReverse {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: calc(var(--path-length) * -1);
+    opacity: 0;
+  }
+}
+
+/* ✨ Animation DEPUIS LE POINT vers la popup + angle (UN SEUL path) */
+@keyframes drawFromPoint {
+  0% {
+    stroke-dashoffset: var(--path-length);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+/* 🗑️ Animation d'effacement : ANGLE D'ABORD puis TRAIT vers le point */
+@keyframes eraseFromCorner {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: var(--path-length);
+    opacity: 0;
+  }
+}
+
+/* 💨 Animation de disparition élégante pour la popup */
+@keyframes fadeOutPopup {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-25px) scale(0.95);
+  }
+}
+
+.animate-fadeOutPopup {
+  animation: fadeOutPopup 0.4s cubic-bezier(0.36, 0, 0.66, -0.3) forwards;
+}
+
+/* 🎨 Animation de la border de la popup - trace le contour */
+@keyframes drawBorder {
+  0% {
+    border-color: transparent;
+    border-width: 3px;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+
+  100% {
+    border-color: rgba(255, 255, 255, 1);
+    border-width: 3px;
+    box-shadow: 0 0 8px 1px rgba(255, 255, 255, 0.25);
+  }
+}
+
+.animate-drawBorder {
+  animation: drawBorder 0.3s ease-out 1.8s forwards;
+}
+
+/* 🎯 Animation fluide pour la popup de légende - slide depuis la droite */
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slideInFromRight {
+  animation: slideInFromRight 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ⭐ CSS Stars - Lightweight alternative to Three.js */
+.css-stars {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.css-stars::before,
+.css-stars::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, white, transparent),
+    radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 50px 160px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 90px 40px, white, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 160px 120px, white, transparent),
+    radial-gradient(1px 1px at 200px 50px, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 230px 180px, white, transparent),
+    radial-gradient(1px 1px at 280px 90px, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 320px 140px, white, transparent),
+    radial-gradient(1px 1px at 360px 60px, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 400px 200px, white, transparent);
+  background-repeat: repeat;
+  background-size: 400px 220px;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+
+.css-stars::after {
+  background-position: 50% 50%;
+  animation-delay: -2s;
+  opacity: 0.7;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.4;
+  }
+
+  100% {
+    opacity: 0.8;
+  }
+}

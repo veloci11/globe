@@ -1,0 +1,35 @@
+<svg width="1920" height="1080" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="orb1">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:0.4" />
+      <stop offset="50%" style="stop-color:#ff6b35;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#ff6b35;stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="orb2">
+      <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:0.35" />
+      <stop offset="50%" style="stop-color:#00d4ff;stop-opacity:0.15" />
+      <stop offset="100%" style="stop-color:#00d4ff;stop-opacity:0" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="10" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Orbes lumineux au premier plan -->
+  <circle cx="1600" cy="250" r="180" fill="url(#orb1)" filter="url(#glow)"/>
+  <circle cx="300" cy="850" r="220" fill="url(#orb2)" filter="url(#glow)"/>
+  
+  <!-- Particules brillantes -->
+  <circle cx="1700" cy="150" r="3" fill="#ff6b35" opacity="0.8" filter="url(#glow)"/>
+  <circle cx="1500" cy="350" r="2" fill="#f7931e" opacity="0.9" filter="url(#glow)"/>
+  <circle cx="200" cy="750" r="3" fill="#00d4ff" opacity="0.8" filter="url(#glow)"/>
+  <circle cx="400" cy="950" r="2.5" fill="#0099ff" opacity="0.9" filter="url(#glow)"/>
+  
+  <!-- Lignes décoratives subtiles -->
+  <line x1="1400" y1="200" x2="1800" y2="300" stroke="#ff6b35" stroke-width="1" opacity="0.2"/>
+  <line x1="100" y1="800" x2="500" y2="900" stroke="#00d4ff" stroke-width="1" opacity="0.2"/>
+</svg>
